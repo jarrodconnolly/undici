@@ -23,17 +23,17 @@ module.exports.errors = errors
 
 module.exports.Agent = Agent
 
-let globalAgent = new Agent({ connections: null })
+let globalClient = new Agent({ connections: null })
 
 function setGlobalClient (agent) {
   if (!agent || typeof agent.dispatch !== 'function') {
     throw new InvalidArgumentError('Argument agent must implement Agent')
   }
-  globalAgent = agent
+  globalClient = agent
 }
 
 function getGlobalClient () {
-  return globalAgent
+  return globalClient
 }
 
 function makeDispatch (fn) {
